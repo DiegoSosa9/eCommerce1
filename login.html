@@ -16,14 +16,27 @@
   </style>
 </head>
 
-<body>
-  <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+<body >
+  <div class="text-center d-flex align-items-center ">
+
+  
+  <main class="form-signin">
+    <form class="d-flex flex-column login">
+      <img class="mb-3" src="img/login.png" alt=""  height="180">
+      <h1 class="h3 mb-3 fw-normal">Inicio de sesión</h1>
+  
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="Correo">
+        <label for="floatingInput">Email </label>
       </div>
-    </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Contraseña</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary boton-login" type="button" onclick="validar()">Ingresar</button>
+    </form>
   </main>
+</div>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -36,5 +49,7 @@
   </footer>
   <script src="js/login.js"></script>
 </body>
+  
+
 
 </html>
