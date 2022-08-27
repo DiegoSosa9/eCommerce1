@@ -13,6 +13,8 @@ function validar(){
         document.getElementById("floatingPassword").classList.add("borde-red");
         alert("La contraseña debe tener minimo 6 caracteres")
     } else {
+        const mail = document.getElementById("floatingInput").value;
+        localStorage.setItem('email', mail );
         window.location.replace("menu.html")
         
     }

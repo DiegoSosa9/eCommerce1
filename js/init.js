@@ -39,3 +39,13 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener('DOMContentLoaded', function(){
+  const barra = document.querySelectorAll('#usuario-email');
+  const almacenLocal = localStorage.getItem('email');
+  barra.forEach(element => {
+    element.innerHTML+= `<li class="nav-item">
+    <a class="nav-link">${almacenLocal}</a>
+  </li>`
+  });
+})
