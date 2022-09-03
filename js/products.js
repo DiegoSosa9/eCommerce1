@@ -14,6 +14,16 @@ async function getData(){
     }
     
 }
+async function getNameCat(){
+    try {
+        const respuesta = await fetch(jsonProduct);
+        let info = await respuesta.json();
+        return info.catName;
+    } catch (error) {
+        console.log(error);
+    }
+    
+}
 
 
 async function showProductsList(array){
@@ -138,5 +148,15 @@ document.addEventListener('DOMContentLoaded', async function(){
         showProductsList(arrayOriginal);
     });
 
+    document.getElementById("searchProduct").addEventListener('keyup', function(){
+        const valor = document.getElementById("searchProduct").value;
+        const busqueda = arrayOriginal.filter (element => {
+            return element.name.toLowerCase().indexOf(valor.toLowerCase()) > -1;
+        })
+        showProductsList(busqueda);
+    })
+
+    const spanCat = document.getElementById('categoryName');
+    spanCat.innerHTML = await getNameCat();
 
 })
