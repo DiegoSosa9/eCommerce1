@@ -25,6 +25,10 @@ async function getNameCat(){
     
 }
 
+function setProductId(id){
+    localStorage.setItem('productId', id);
+    window.location = "product-info.html"
+}
 
 async function showProductsList(array){
     let listado = "";
@@ -36,7 +40,7 @@ async function showProductsList(array){
             ((maxPrice == undefined) || (maxPrice != undefined && parseInt(price.cost) <= maxPrice))){
 
         listado += `
-            <div class="list-group-item list-group-item-action cursor-active">
+            <div class="list-group-item list-group-item-action cursor-active" onclick="setProductId(${arrayProducts[i].id})">
                 <div class="row">
                     <div class="col-3">
                         <img src="${arrayProducts[i].image}" alt="${arrayProducts[i].image}" class="img-thumbnail">

@@ -220,3 +220,7 @@ form {
   border-color: red;
 }
 
+.checked {
+  color: orange;
+}
+
