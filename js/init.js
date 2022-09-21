@@ -44,8 +44,16 @@ document.addEventListener('DOMContentLoaded', function(){
   const barra = document.querySelectorAll('#usuario-email');
   const almacenLocal = localStorage.getItem('email');
   barra.forEach(element => {
-    element.innerHTML+= `<li class="nav-item">
-    <a class="nav-link">${almacenLocal}</a>
-  </li>`
+    element.innerHTML+= `<div class="dropdown">
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="color:rgba(255,255,255,.55)">
+    ${almacenLocal}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="./cart.html">Mi carrito</a></li>
+      <li><a class="dropdown-item" href="./my-profile.html">Mi perfil</a></li>
+      <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+    </ul>
+  </div>`
   });
 })
+

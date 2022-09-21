@@ -12,7 +12,14 @@ async function getProduct(link){
     }
 }
 
+function setProductId(id){
+    localStorage.setItem('productId', id);
+    window.location.reload();
+}
+
 function showProduct(producto, imagenes, comentarios){
+
+    //mostrar imagenes del producto
     let img = '';
     for (let i = 0; i < imagenes.length; i++) {
         img += `
@@ -20,9 +27,7 @@ function showProduct(producto, imagenes, comentarios){
         `  
     }
 
-    
-
-
+    //mostrar comentarios del producto
     let comment = '';
     for (let i = 0; i < comentarios.length; i++) {
 
@@ -33,6 +38,8 @@ function showProduct(producto, imagenes, comentarios){
                     `;
         
     }
+
+    //mostrar estrellas sin pintar
     let estrellasSinPintar = 5 - comentarios[i].score ;
     console.log(estrellasSinPintar)
         for (let i = 0; i < estrellasSinPintar; i++) {
@@ -58,6 +65,21 @@ function showProduct(producto, imagenes, comentarios){
         `
     }
 
+    //cargar relacionados
+    let productRelacionados = producto.relatedProducts;
+    let relacionados = "";
+    for (let i = 0; i < productRelacionados.length; i++) {
+        relacionados += `
+        <div class="card m-1" style="width: 17rem;" onclick="setProductId(${productRelacionados[i].id})">
+            <img src="${productRelacionados[i].image}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <p class="card-text">${productRelacionados[i].name}</p>
+            </div>
+        </div>
+        `;
+    }
+
+    //cargar en la pagina todo el html
     let show = '';
     show += `
         <div class="row">
@@ -95,13 +117,16 @@ function showProduct(producto, imagenes, comentarios){
             <h2 class="mb-3">Comentarios</h2>
         </div>
             ${comment}
-        </div>
-
+        </div> 
+        
         
     `
     let contenedor = document.getElementById('producto');
     contenedor.innerHTML = show;
+    let rela = document.getElementById('relacionados');
+    rela.innerHTML = relacionados;
 }
+
 
 document.addEventListener('DOMContentLoaded', async function(){
     let producto = await getProduct(URL);
