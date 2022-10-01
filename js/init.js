@@ -40,6 +40,10 @@ let getJSONData = function(url){
     });
 }
 
+function borrarMail (){
+  localStorage.removeItem('email');
+}
+
 document.addEventListener('DOMContentLoaded', function(){
   const barra = document.querySelectorAll('#usuario-email');
   const almacenLocal = localStorage.getItem('email');
@@ -51,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function(){
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
       <li><a class="dropdown-item" href="./cart.html">Mi carrito</a></li>
       <li><a class="dropdown-item" href="./my-profile.html">Mi perfil</a></li>
-      <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+      <li><a class="dropdown-item" href="./index.html" onclick="borrarMail()" >Cerrar sesión</a></li>
     </ul>
   </div>`
   });
