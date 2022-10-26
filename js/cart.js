@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async function(){
             </div>
             <p class="col-2">${productosCarrito[i].name}</p>
             <p class="col-2">${productosCarrito[i].currency} <span id="costo_id">${productosCarrito[i].unitCost}</span></p>
-            <div class="p0 col-2"><input type="number" class="form-control"  style="width: 30%;" value="${productosCarrito[i].count}" id="id_input"></div>
+            <div class="p0 col-2"><input type="number" class="form-control"  style="width: 40%;" value="${productosCarrito[i].count}" id="id_input"></div>
             <p class="col-2"><b>${productosCarrito[i].currency}  <span id="id_subtotal">${productosCarrito[i].unitCost} </span></b></p>
         </div>
         `;
@@ -138,18 +138,22 @@ fcompra.addEventListener('click', function(){
     let tcredito1 = document.getElementById("valid-tcredito");
     let tcredito2 = document.getElementById("invalid-tcredito");
 
+    let campoformadepago = document.getElementById("campo-formadepago")
 
     if (!tarjetadecredito.checked){
         if(!transferenciabancaria.checked){
             pago2.style.display = "block";
             pago1.style.display = "none";
         }else{
+            tcredito1.style.display = "none";
+            tcredito2.style.display = "none";
             if(numdecuenta.value.length > 0){
                 numcuenta1.style.display = "block";
                 numcuenta2.style.display = "none";
 
                 pago1.style.display = "block";
                 pago2.style.display = "none";
+                campoformadepago.innerHTML = 'Transferencia bancaria';
             }else{
                 numcuenta2.style.display = "block";
                 numcuenta1.style.display = "none";
@@ -157,12 +161,16 @@ fcompra.addEventListener('click', function(){
         }
         
     }else{
+        numcuenta2.style.display = "none";
+        numcuenta1.style.display = "none";
         if(numdetarjeta.value.length > 0 && codigodeseg.value.length > 0 && vencimiento.value.length > 0){
             tcredito1.style.display = "block";
             tcredito2.style.display = "none";
 
             pago1.style.display = "block";
             pago2.style.display = "none";
+
+            campoformadepago.innerHTML = 'Tarjeta de credito';
         }else{
             tcredito2.style.display = "block";
             tcredito1.style.display = "none";
@@ -170,7 +178,43 @@ fcompra.addEventListener('click', function(){
         
     }
 
+    let inputcantidad = document.getElementById("id_input");
+    let invalidinput = document.getElementById("invalid-input");
+    if(inputcantidad.value >= 1){
+        invalidinput.style.display = "none";
+    }else{
+        
+        invalidinput.style.display = "block";
+    }
 
+
+
+    if(inputCalle.value.length > 0 && inputNumero.value.length > 0 && inputEsquina.value.length > 0){
+        if(premium.checked || express.checked || standard.checked){
+            if(inputcantidad.value > 0){
+                if(tarjetadecredito.checked){
+                    if(numdetarjeta.value.length > 0 && codigodeseg.value.length > 0 && vencimiento.value.length > 0){
+                        let success = document.getElementById("success");
+                        success.innerHTML = `
+                        <div class="alert alert-success" role="alert">
+                        Has comprado con éxito!
+                        </div>
+                        `
+                    }
+                }else if (transferenciabancaria.checked){
+                    if(numdecuenta.value.length > 0){
+                        let success = document.getElementById("success");
+                        success.innerHTML = `
+                        <div class="alert alert-success" role="alert">
+                        Has comprado con éxito!
+                        </div>
+                        `
+                    }
+                }
+                
+            }
+        }
+    }
 
 
 })
