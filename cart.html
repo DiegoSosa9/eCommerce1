@@ -59,22 +59,28 @@
       <form action="" class="mt-3">
 
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+          <input class="form-check-input" type="radio" name="exampleRadios" id="premium" value="option1">
           <label class="form-check-label" for="exampleRadios1">
             Premium 2 a 5 dias (15%)
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="express" value="option2">
           <label class="form-check-label" for="exampleRadios2">
             Express 5 a 8 dias (7%)
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="standard" value="option2">
           <label class="form-check-label" for="exampleRadios2">
-            Standar 12 a 15 dias (5%)
+            Standard 12 a 15 dias (5%)
           </label>
+        </div>
+        <div class="valid-feedback" id="valid-envio">
+          Correcto
+        </div>
+        <div id="invalid-envio" class="invalid-feedback">
+          Seleccione un tipo de envío
         </div>
         <h4 class="mt-3">Dirección de envío</h4>
 
@@ -82,18 +88,158 @@
           <div class="form-group col-md-6">
             <label for="inputCalle">Calle</label>
             <input type="text" class="form-control" id="inputCalle" placeholder="Calle">
+            <div class="valid-feedback" id="valid-calle">
+              Correcto
+            </div>
+            <div id="invalid-calle" class="invalid-feedback">
+              Ingresar una calle
+            </div>
           </div>
           <div class="form-group col-md-4">
             <label for="inputNumero">Numero</label>
             <input type="text" class="form-control" id="inputNumero" placeholder="Numero">
+            <div class="valid-feedback" id="valid-numero">
+              Correcto
+            </div>
+            <div id="invalid-numero" class="invalid-feedback">
+              Ingresar un numero
+            </div>
           </div>
         </div>
         <div class="form-group col-md-6 mt-3">
           <label for="inputEsquina">Esquina</label>
           <input type="text" class="form-control" id="inputEsquina" placeholder="Esquina">
+          <div class="valid-feedback" id="valid-esquina">
+            Correcto
+          </div>
+          <div id="invalid-esquina" class="invalid-feedback">
+            Ingresar una esquina
+          </div>
         </div>
         
       </form>
+      <hr class="mb-3 mt-5">
+    
+      <div>
+        <h4>Costos</h4>
+          <ul class="list-group">
+             <li class="list-group-item">  
+               <div class="row">
+                 <p class="m-0 w-50">Subtotal</p>                      
+                 <p class="text-end w-50 m-0 align-top">USD <span id="subtotal"></span></p>               
+                 <p class="m-0 w-50">Costo unitario del producto por cantidad</p>                     
+               </div>  
+             </li>
+
+             <li class="list-group-item">  
+               <div class="row">
+                 <p class="m-0 w-50">Cost de Envío</p>                      
+                 <p class="text-end w-50 m-0 align-top">USD <span id="costo-envio"></span></p>               
+                 <p class="m-0 w-50">Segun el tipo de envío</p>                     
+               </div>  
+             </li>
+             <li class="list-group-item">  
+               <div class="row">
+                 <p class="m-0 w-50">Total ($)</p>                      
+                 <p class="text-end w-50 m-0 align-top">USD <span id="total"></span></p>        
+
+               </div>  
+             </li>
+           </ul>
+      </div>
+
+  
+<hr class="mb-3 mt-5">
+  <h4>Forma de pago</h4>
+
+  <p class="mt-3">No ha seleccionado. <a type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Seleccionar
+  </a></p>
+
+  <div class="valid-feedback mb-3" id="valid-pago">
+    Correcto
+  </div>
+  <div id="invalid-pago" class="invalid-feedback mb-3">
+    Debe ingresar una forma de pago
+  </div>
+
+ <!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Forma de pago</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      
+      </div>
+      <div class="modal-body">
+        <form action="">
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="tarjeta-de-credito" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              Tarjeta de crédito
+            </label>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="inputCalle">Número de tarjeta</label>
+              <input type="text" class="form-control" id="numero-de-tarjeta" placeholder="Número de tarjeta">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputNumero">Codigo de seg.</label>
+              <input type="text" class="form-control" id="codigo-de-seg" placeholder="Codigo de seg.">
+            </div>
+          </div>
+          <div class="form-group col-md-6 mt-3">
+            <label for="inputEsquina">Vencimiento (MM/AA)</label>
+            <input type="text" class="form-control" id="vencimiento" placeholder="Vencimiento (MM/AA)">
+          </div>
+
+          <div class="valid-feedback" id="valid-tcredito">
+            Correcto
+          </div>
+          <div id="invalid-tcredito" class="invalid-feedback">
+            Debe ingresar todos los campos de la tarjeta
+          </div>
+
+
+          <div class="form-check mt-2">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="transferencia-bancaria" value="option1">
+            <label class="form-check-label" for="exampleRadios1">
+              Transferencia bancaria
+            </label>
+          </div>
+
+          <hr>
+
+          <div class="form-group col-md-6">
+            <label for="inputCalle">Número de cuenta</label>
+            <input type="text" class="form-control" id="numero-de-cuenta" placeholder="Número de cuenta">
+            <div class="valid-feedback" id="valid-numcuenta">
+              Correcto
+            </div>
+            <div id="invalid-numcuenta" class="invalid-feedback">
+              Debe ingresar un numero de cuenta
+            </div>
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-grid gap-2">
+  <button class="btn btn-primary" type="button" id="finalizar-compra">Finalizar Compra</button>
+  </div>
 
     </div>
   </main>
