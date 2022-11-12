@@ -34,7 +34,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+        <ul class="navbar-nav w-100 justify-content-between" id="usuario-email">
           <li class="nav-item">
             <a class="nav-link" href="menu.html">Inicio</a>
           </li>
@@ -44,16 +44,63 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-          </li>
+          
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container d-flex justify-content-center">
+      <div class="col-8">
+        <h2 class="pt-3 pb-3">Perfil</h2>
+      <hr>
+      <form class="row g-3">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Primer nombre (*)</label>
+          <input type="text" class="form-control" id="inputPriNom">
+          <div class="valid-feedback" id="valid-nombre">
+            Correcto
+          </div>
+          <div id="invalid-nombre" class="invalid-feedback">
+            Ingresar un nombre
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Segundo nombre</label>
+          <input type="text" class="form-control" id="inputSegNom">
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Primer apellido (*)</label>
+          <input type="text" class="form-control" id="inputPriAp">
+          <div class="valid-feedback" id="valid-apellido">
+            Correcto
+          </div>
+          <div id="invalid-apellido" class="invalid-feedback">
+            Ingresar un apellido
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Segundo apelllido</label>
+          <input type="text" class="form-control" id="inputSegAp">
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">E-mail (*)</label>
+          <input type="email" class="form-control" id="inputEmail">
+          <div class="valid-feedback" id="valid-email">
+            Correcto
+          </div>
+          <div id="invalid-email" class="invalid-feedback">
+            Ingresar un email
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Teléfono de contacto</label>
+          <input type="text" class="form-control" id="inputContacto">
+        </div>
+        <div class="col-12 pt-5">
+          <button type="button" id="btn" class="btn btn-primary">Guardar cambios</button>
+        </div>
+      </form>
       </div>
     </div>
   </main>
